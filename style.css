@@ -1,0 +1,171 @@
+/* ==========================================================
+   Parallax technique: background-attachment: fixed
+   ========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* { box-sizing: border-box; }
+
+body, html { height: 100%; }
+
+body {
+    margin: 0;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    background: #ffffff;
+    color: #333333; /* #333 on #fff = 12.63:1, passes WCAG AAA (webaim.org/resources/contrastchecker) */
+}
+
+
+/* ---------- Hero ---------- */
+
+.hero {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: #2c2c2c;
+    color: #ffffff; /* #fff on #2c2c2c = 13.9:1, passes WCAG AAA */
+}
+
+.hero h1 {
+    margin: 0 0 .5rem;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 700;
+}
+
+.hero p {
+    margin: .25rem 0;
+    font-size: 1.1rem;
+}
+
+.scroll-hint {
+    margin-top: 2rem;
+    font-size: .9rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+}
+
+
+/* ---------- Parallax image ---------- */
+
+.parallax {
+    min-height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Turn off the fixed attachment on phones/tablets, where it is unreliable */
+@media only screen and (max-device-width: 1366px) {
+    .parallax {
+        background-attachment: scroll;
+    }
+}
+
+.parallax-text {
+    padding: 1.5rem 2.5rem;
+    text-align: center;
+    color: #ffffff;
+    /* Solid dark overlay behind the text so it reads over any photo. */
+    background: rgba(0, 0, 0, .6);
+    border-radius: 4px;
+}
+
+.parallax-text .time {
+    display: block;
+    margin-bottom: .5rem;
+    font-size: .9rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+}
+
+.parallax-text h2 {
+    margin: 0;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 700;
+}
+
+
+/* ---------- Story text sections ---------- */
+
+.content {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+}
+
+.content h2 {
+    margin: 0 0 1rem;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-weight: 700;
+}
+
+.content p {
+    margin: 0 0 1rem;
+}
+
+
+/* ---------- Ending ---------- */
+
+.ending {
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    background: #2c2c2c;
+    color: #ffffff; 
+}
+
+.ending h2 {
+    margin: 0 0 .5rem;
+    font-size: clamp(2rem, 6vw, 3rem);
+}
+
+
+/* ---------- Footer ---------- */
+
+footer {
+    padding: 1.5rem;
+    text-align: center;
+    font-size: .85rem;
+    background: #f5f5f5;
+    color: #555555; 
+}
+
+footer p { margin: .2rem 0; }
+
+
+/* ---------- Progressive reveal ---------- */
+
+.js .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity .8s ease, transform .8s ease;
+}
+
+.js .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .js .reveal {
+        transition: none;
+        opacity: 1;
+        transform: none;
+    }
+}
